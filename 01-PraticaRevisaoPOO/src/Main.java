@@ -19,7 +19,7 @@ public class Main {
         VeiculoEletrico v8 = new VeiculoEletrico("ccccccccc", "cccc", 420.0, 38.0, 11.0);
         VeiculoEletrico v9 = new VeiculoEletrico("ccccccccc", "cccc", 420.0, 38.0, 11.0);
         VeiculoEletrico v10 = new VeiculoEletrico("ccccccccc", "cccc", 420.0, 38.0, 11.0);
-        VeiculoEletrico v11 = new VeiculoEletrico("ccccccccc", "cccc", 420.0, 38.0, 11.0);
+        VeiculoEletrico v11 = new VeiculoEletrico("Tesla", "X", 420.0, 38.0, 15.0);
         VeiculoCombustao v12 = new VeiculoCombustao("Renault", "Kwid", 440.0, 508.0, 14.0, new ArrayList<>(Arrays.asList(COMBUSTIVEL.GASOLINA, COMBUSTIVEL.DIESEL)));
         VeiculoEletrico v13 = new VeiculoEletrico("ccccccccc", "cccc", 420.0, 38.0, 11.0);
         VeiculoEletrico v14 = new VeiculoEletrico("ccccccccc", "ccgc", 420.0, 38.0, 11.0);
@@ -70,9 +70,9 @@ public class Main {
             System.out.println(ve.getMarca()+" "+ve.getModelo()+" - Capacidade da bateria: "+ve.getCapacidadeTanque()+" watts;"+" Disponível: "+ve.getCombustivelDisponivel()+" watts");
         }
 
-        System.out.println("\nVeiculos com autonomia inferior a 1%:");
-        List<Veiculo> menores_autonomias_percentual = f1.menoresAutonomiasPorPercentual(5, 1);
-        for (Veiculo v : lista_veiculos) {
+        System.out.println("\nVeiculos com autonomia inferior a 25%:");
+        List<Veiculo> menores_autonomias_percentual = f1.menoresAutonomiasPorPercentual(25);
+        for (Veiculo v : menores_autonomias_percentual) {
             System.out.println(v.getMarca()+" "+v.getModelo()+" - Capacidade total: "+v.getCapacidadeTanque()+" Disponível: "+v.getCombustivelDisponivel());
         }
     }

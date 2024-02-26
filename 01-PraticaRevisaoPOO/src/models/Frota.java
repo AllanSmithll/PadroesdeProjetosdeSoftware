@@ -79,13 +79,20 @@ public class Frota {
         }
     }
 
-//    public List<Veiculo> listarVeiculosComAutonomiaInferior(int porcentagem) {
-//        List<Veiculo> resultados = new ArrayList<>();
-//        for (Veiculo veiculo : this.veiculos) {
-//            if (veiculo.getAutonomia() * porcentagem / 100 < veiculo.getAutonomia()) {
-//                resultados.add(veiculo);
-//            }
-//        }
-//        return resultados;
-//    }
+    public List<Veiculo> menoresAutonomiasPorPercentual(double percentual) {
+        if (this.veiculos.isEmpty()) {
+            return List.of();
+        }
+        List<Veiculo> var_veiculos = this.veiculos;
+        List<Veiculo> menores_autonomias_percentual = new ArrayList<>();
+        for (Veiculo v : var_veiculos) {
+            double combustivelDisponivel = v.getCombustivelDisponivel();
+            double capacidadeTanque = v.getCapacidadeTanque();
+            double autonomiaTotal = v.getAutonomia();
+            double autonomiaParcial = (combustivelDisponivel / capacidadeTanque) * autonomiaTotal;
+            double porcentagemAutonomia = (autonomiaParcial / autonomiaTotal) * 100;
+            if (porcentagemAutonomia < percentual) menores_autonomias_percentual.add(v);
+        }
+        return menores_autonomias_percentual;
+    }
 }
