@@ -1,3 +1,8 @@
+/*
+Allan Alves Amancio - Padroes de Projetos de Software - CSTSI - IFPB - Campus Joao Pessoa
+Data: 26/02/2024
+1 - Atividade de Revisao - Frota de Veiculos
+ */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -76,4 +81,5 @@ public class Main {
             System.out.println(v.getMarca()+" "+v.getModelo()+" - Capacidade total: "+v.getCapacidadeTanque()+" Disponível: "+v.getCombustivelDisponivel());
         }
     }
+
 }
