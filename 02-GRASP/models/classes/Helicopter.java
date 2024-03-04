@@ -2,19 +2,16 @@ package models.classes;
 
 import models.interfaces.Veicule;
 
-public class Car implements Veicule {
+public class Helicopter implements Veicule {
     private final String identification;
-    private double range;
-    private Motor motor;
-    private String plate;
+    private int quantityRotors;
+    private double flightTime;
     private double purchasePrice;
 
-
-    public Car(String identification, double range, Motor motor, String plate, double purchasePrice) {
+    public Helicopter(String identification, int quantityRotors, double flightTime, double purchasePrice) {
         this.identification = identification;
-        this.range = range;
-        this.motor = motor;
-        this.plate = plate;
+        this.quantityRotors = quantityRotors;
+        this.flightTime = flightTime;
         this.purchasePrice = purchasePrice;
     }
 
@@ -28,8 +25,7 @@ public class Car implements Veicule {
         return this.purchasePrice;
     }
 
-    @Override
-    public double calculateDiary() {
-        return 0.02 * this.purchasePrice;
+    public void setPurchasePrice(double purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 }
