@@ -1,30 +1,25 @@
 package models.classes;
 
-import models.interfaces.Veicule;
+import models.enums.StartingSystem;
 
-public class Bus implements Veicule {
-    private final String identification;
-    private Motor motor;
-    private String plate;
+public class Bus extends LandVehicle {
     private int numberPassengers;
-    private double purchasePrice;
 
-    // Construtor
-    public Bus(String identification, Motor motor, String plate, int numberPassengers, double purchasePrice) {
-        this.identification = identification;
-        this.motor = motor;
-        this.plate = plate;
+    public Bus(String identification, double purchasePrice, String motor, String plate, int numberPassengers) {
+        super(identification, purchasePrice, motor, plate);
         this.numberPassengers = numberPassengers;
-        this.purchasePrice = purchasePrice;
+    }
+
+    public int getNumberPassengers() {
+        return numberPassengers;
+    }
+
+    public void setNumberPassengers(int numberPassengers) {
+        this.numberPassengers = numberPassengers;
     }
 
     @Override
-    public String getIdentification() {
-        return this.identification;
-    }
-
-    @Override
-    public double getPurchasePrice() {
-        return this.purchasePrice;
+    public double getDiaryRate() {
+        return (0.04 * this.getPurchasePrice()) + (100 * this.numberPassengers);
     }
 }

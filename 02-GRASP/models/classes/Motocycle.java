@@ -1,33 +1,28 @@
 package models.classes;
 
 import models.enums.StartingSystem;
-import models.interfaces.Veicule;
 
-public class Motocycle implements Veicule {
-    private final String identification;
-    private Motor motor;
-    private String placa;
+public class Motocycle extends LandVehicle {
     private StartingSystem startingSystem;
-    private double valorDeCompra;
 
-    // Construtor
-    public Motocycle(String identification, Motor motor, String placa, StartingSystem startingSystem, double valorDeCompra) {
-        this.identification = identification;
-        this.motor = motor;
-        this.placa = placa;
+    public Motocycle(String identification, double purchasePrice, String motor, String plate, StartingSystem startingSystem) {
+        super(identification, purchasePrice, motor, plate);
         this.startingSystem = startingSystem;
-        this.valorDeCompra = valorDeCompra;
+    }
+
+    public StartingSystem getStartingSystem() {
+        return startingSystem;
+    }
+
+    public void setStartingSystem(StartingSystem startingSystem) {
+        this.startingSystem = startingSystem;
     }
 
     @Override
-    public String getIdentification() {
-        return null;
+    public double getDiaryRate() {
+        if(this.startingSystem.equals(StartingSystem.ELECTRIC)) {
+            return (0.02 * this.getPurchasePrice()) + 20.0;
+        }
+        return (0.02 * this.getPurchasePrice()) + 5.0;
     }
-
-    @Override
-    public double getPurchasePrice() {
-        return 0;
-    }
-
-    // Métodos getters e setters para os atributos da classe Moto...
 }
