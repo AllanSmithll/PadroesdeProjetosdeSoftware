@@ -13,4 +13,6 @@ public class Aluguel {
     public int getDiasAlugado() {
         return diasAlugado;
     }
+
+    public double calcularValor() { return dvd.calcularPreco() * diasAlugado; }
 }

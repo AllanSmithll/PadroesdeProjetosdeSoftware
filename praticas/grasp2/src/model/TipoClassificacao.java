@@ -4,19 +4,19 @@ public enum TipoClassificacao {
 
     NORMAL {
         public double getPreco(DVD dvd) {
-            return 10.0;
+            return 2.0;
         }
     },
 
     LANCAMENTO {
         public double getPreco(DVD dvd) {
-            return 15.0;
+            return 3.0;
         }
     },
 
     INFANTIL {
         public double getPreco(DVD dvd) {
-            return 8.0;
+            return 1.5;
         }
     };
 
