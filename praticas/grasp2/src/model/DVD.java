@@ -1,27 +1,30 @@
 package model;
 
-public class DVD {
-    private final String titulo;
-    private TipoClassificacao tipoClassificacao;
+public abstract class DVD {
+    private String titulo;
+    private boolean ehBonus = false;
 
-    public DVD(String titulo, TipoClassificacao tipoClassificacao) {
+
+    public DVD(String titulo) {
         this.titulo = titulo;
-        this.tipoClassificacao = tipoClassificacao;
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public TipoClassificacao getTipoClassificacao() {
-        return tipoClassificacao;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public void setTipoPreco(TipoClassificacao tipoPreco) {
-        this.tipoClassificacao = tipoPreco;
+    public boolean ehBonus() {
+        return ehBonus;
     }
 
-    public double calcularPreco() {
-        return tipoClassificacao.getPreco(this);
+    // Método setter para modificar o atributo ehBonus
+    protected void setEhBonus(boolean ehBonus) {
+        this.ehBonus = ehBonus;
     }
+
+    public abstract double calcularPreco(int diasAlugados);
 }

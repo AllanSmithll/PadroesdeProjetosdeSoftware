@@ -2,17 +2,21 @@ package model;
 
 public class Aluguel {
     private DVD dvd;
-    private int diasAlugado;
+    private int diasAlugados;
     public Aluguel(DVD dvd, int diasAlugado) {
         this.dvd = dvd;
-        this.diasAlugado = diasAlugado;
+        this.diasAlugados = diasAlugado;
     }
     public DVD getDVD() {
         return dvd;
     }
     public int getDiasAlugado() {
-        return diasAlugado;
+        return diasAlugados;
     }
 
-    public double calcularValor() { return dvd.calcularPreco() * diasAlugado; }
+    public boolean ehDVDBonus(){
+        return this.dvd.ehBonus();
+    }
+
+    public double calcularValor() { return dvd.calcularPreco(this.diasAlugados); }
 }

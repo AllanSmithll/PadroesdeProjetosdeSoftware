@@ -1,37 +1,41 @@
 package model;
 
-public class Extrato {
+import java.util.Iterator;
+import java.util.List;
 
+public class Extrato {
     public static String gerarExtrato(Cliente cliente) {
         final String fimDeLinha = System.getProperty("line.separator");
+
         double valorTotal = 0.0;
+
         int pontosDeAlugadorFrequente = 0;
 
-        // Calcula o valor total e os pontos de fidelidade para cada aluguel
-        for (Aluguel aluguel : cliente.getDvdsAlugados()) {
-            valorTotal += aluguel.calcularValor();
-            pontosDeAlugadorFrequente += calcularPontos(aluguel);
+        List<Aluguel> alugueis = cliente.getDvdsAlugados();
+        StringBuilder resultado = new StringBuilder("Registro de Alugueis de " + cliente.getNome() +
+                fimDeLinha);
+
+        for (Aluguel aluguel : alugueis) {
+            double valorCorrente = 0.0;
+
+            valorCorrente += aluguel.calcularValor();
+
+            pontosDeAlugadorFrequente++;
+
+            // adiciona bonus para aluguel de um lançamento por pelo menos 2 dias
+            if (aluguel.ehDVDBonus() && aluguel.getDiasAlugado() > 1) {
+                pontosDeAlugadorFrequente++;
+            }
+
+            // mostra valores para este aluguel
+            resultado.append("\t").append(aluguel.getDVD().getTitulo()).append("\t").append(valorCorrente).append(fimDeLinha);
+            valorTotal += valorCorrente;
         }
 
-        // Gera o extrato
-        String resultado = "Registro de Alugueis de " + cliente.getNome() + fimDeLinha;
-        for (Aluguel aluguel : cliente.getDvdsAlugados()) {
-            resultado += "\t" + aluguel.getDVD().getTitulo() + "\t" + aluguel.calcularValor() + fimDeLinha;
-        }
-        resultado += "Valor total devido: " + valorTotal + fimDeLinha;
-        resultado += "Você acumulou " + pontosDeAlugadorFrequente + " pontos de alugador frequente";
-        return resultado;
-    }
+        // adiciona rodapé
+        resultado.append("Valor total devido: ").append(valorTotal).append(fimDeLinha);
+        resultado.append("Você acumulou ").append(pontosDeAlugadorFrequente).append(" pontos de alugador frequente");
 
-    private static int calcularPontos(Aluguel aluguel) {
-        int pontos = 1;
-
-        // Regras para pontuação de acordo com o tipo de DVD e dias alugados
-        if (aluguel.getDVD().getTipoClassificacao() == TipoClassificacao.LANCAMENTO &&
-                aluguel.getDiasAlugado() > 1) {
-            pontos++;
-        }
-
-        return pontos;
+        return resultado.toString();
     }
 }
