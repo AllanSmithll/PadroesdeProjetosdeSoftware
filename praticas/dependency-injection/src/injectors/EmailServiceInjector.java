@@ -2,7 +2,7 @@ package injectors;
 
 import interfaces.Consumer;
 import interfaces.MessageServiceInjector;
-import models.EmailService;
+import services.EmailService;
 import models.MyApplication;
 
 public class EmailServiceInjector implements MessageServiceInjector {

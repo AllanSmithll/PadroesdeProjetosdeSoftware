@@ -3,7 +3,7 @@ package injectors;
 import interfaces.Consumer;
 import interfaces.MessageServiceInjector;
 import models.MyApplication;
-import models.SMSService;
+import services.SMSService;
 
 public class SMSServiceInjector implements MessageServiceInjector {
     @Override

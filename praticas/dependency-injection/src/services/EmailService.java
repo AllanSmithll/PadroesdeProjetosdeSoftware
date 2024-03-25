@@ -1,4 +1,4 @@
-package models;
+package services;
 
 import interfaces.MessageService;
 
@@ -9,8 +9,7 @@ import interfaces.MessageService;
  */
 public class EmailService implements MessageService {
 
-	public void sendEmail(String message, String receiver){
-		// Neste ponto teríamos a lógica (conjunto de instruções) para enviar um email
+	public void sendMessage(String message, String receiver){
 		System.out.println("Email sent to "+receiver+ " with Message="+message);
 	}
 }
