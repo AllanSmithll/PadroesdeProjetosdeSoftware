@@ -1,4 +1,4 @@
-package models;
+package apps;
 
 import interfaces.Consumer;
 import interfaces.MessageService;

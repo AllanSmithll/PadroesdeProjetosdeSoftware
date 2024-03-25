@@ -3,7 +3,7 @@ package injectors;
 import interfaces.Consumer;
 import interfaces.MessageServiceInjector;
 import services.EmailService;
-import models.MyApplication;
+import apps.MyApplication;
 
 public class EmailServiceInjector implements MessageServiceInjector {
     @Override
