@@ -9,14 +9,14 @@ import interfaces.MessageService;
  *
  */
 public class MyApplication implements Consumer {
-	// classe está responsável por criar e inicializar o serviço de e-mail, para posteriormente utilizá-lo.
-	// Isso leva à "dependência codificada"
-	private MessageService messageService = new EmailService();
+	private final MessageService messageService;
 
+	public MyApplication(MessageService messageService) {
+		this.messageService = messageService;
+	}
 
 	public void processMessages(String msg, String rec){
-		//aqui teríamos algumas mensagens de validação, manipulação da lógica, etc.
-		this.messageService.sendEmail(msg, rec);
+		this.messageService.sendMessage(msg, rec);
 	}
 
 }

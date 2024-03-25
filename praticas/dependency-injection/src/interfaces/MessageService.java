@@ -1,5 +1,5 @@
 package interfaces;
 
 public interface MessageService {
-    void sendEmail(String message, String receiver);
+    void sendMessage(String message, String receiver);
 }
