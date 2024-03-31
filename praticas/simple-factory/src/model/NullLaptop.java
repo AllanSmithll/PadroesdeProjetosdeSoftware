@@ -1,6 +1,6 @@
 package model;
 
-public class LaptopNull implements Laptop {
+public class NullLaptop implements Laptop {
     @Override
     public void runTests() {
         System.out.println("Laptop null.");
