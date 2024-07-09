@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        String keyword = "economia";
+        String keyword = "bolsonaristas";
 
         try {
             G1Scraper g1Scraper = new G1Scraper();

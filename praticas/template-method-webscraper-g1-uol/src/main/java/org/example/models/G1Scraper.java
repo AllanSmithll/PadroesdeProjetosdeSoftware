@@ -27,7 +27,9 @@ public class G1Scraper extends Scraper {
         Elements articles = doc.select("a.feed-post-link");
         List<Map.Entry<String, String>> linksTitles = new ArrayList<>();
         for (Element article : articles) {
-            linksTitles.add(new AbstractMap.SimpleEntry<>(article.attr("href"), article.text()));
+            String title = article.text();
+            String link = article.attr("href");
+            linksTitles.add(new AbstractMap.SimpleEntry<>(link, title));
         }
         return linksTitles;
     }
@@ -42,6 +44,7 @@ public class G1Scraper extends Scraper {
                 writer.newLine();
                 writer.newLine();
             }
+            System.out.println("Saved " + filteredLinksTitles.size() + " articles to g1_news.txt");
         }
     }
 }

@@ -1,7 +1,6 @@
 package org.example.models;
 
 import org.jsoup.Jsoup;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -28,7 +27,9 @@ public class UolScraper extends Scraper {
         Elements articles = doc.select("a.headlineMain");
         List<Map.Entry<String, String>> linksTitles = new ArrayList<>();
         for (Element article : articles) {
-            linksTitles.add(new AbstractMap.SimpleEntry<>(article.attr("href"), article.text()));
+            String title = article.text();
+            String link = article.attr("href");
+            linksTitles.add(new AbstractMap.SimpleEntry<>(link, title));
         }
         return linksTitles;
     }
@@ -43,6 +44,7 @@ public class UolScraper extends Scraper {
                 writer.newLine();
                 writer.newLine();
             }
+            System.out.println("Saved " + filteredLinksTitles.size() + " articles to uol_news.txt");
         }
     }
 }
