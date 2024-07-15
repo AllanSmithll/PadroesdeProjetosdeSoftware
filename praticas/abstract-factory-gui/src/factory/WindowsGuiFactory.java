@@ -7,17 +7,17 @@ import models.classes.WindowsTextArea;
 
 public class WindowsGuiFactory implements GuiFactory {
     @Override
-    public WindowsButton createButton() {
+    public Button createButton() {
         return new WindowsButton();
     }
 
     @Override
-    public WindowsTextArea createTextArea() {
+    public TextArea createTextArea() {
         return new WindowsTextArea();
     }
 
     @Override
-    public WindowsCheckbox createCheckbox() {
+    public Checkbox createCheckbox() {
         return new WindowsCheckbox();
     }
 }
