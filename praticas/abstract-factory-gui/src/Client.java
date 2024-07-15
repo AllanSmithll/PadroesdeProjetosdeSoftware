@@ -1,3 +1,4 @@
+import factory.GuiFactory;
 import factory.MacOSGuiFactory;
 import factory.WindowsGuiFactory;
 
@@ -9,11 +10,11 @@ public class Client {
         System.out.println("SO: "+ os);
 
         if(os.contains("Windows")) {
-            WindowsGuiFactory wf1 = new WindowsGuiFactory();
+            GuiFactory wf1 = new WindowsGuiFactory();
             Button b1 = wf1.createButton();
             b1.click();
         } else {
-            MacOSGuiFactory mf1 = new MacOSGuiFactory();
+            GuiFactory mf1 = new MacOSGuiFactory();
             Checkbox cb1 = mf1.createCheckbox();
             cb1.selected();
         }
