@@ -4,17 +4,17 @@ import models.classes.*;
 
 public class MacOSGuiFactory implements GuiFactory {
     @Override
-    public MacOSButton createButton() {
+    public Button createButton() {
         return new MacOSButton();
     }
 
     @Override
-    public MacOSTextArea createTextArea() {
+    public TextArea createTextArea() {
         return new MacOSTextArea();
     }
 
     @Override
-    public MacOSCheckbox createCheckbox() {
+    public Checkbox createCheckbox() {
         return new MacOSCheckbox();
     }
 }
