@@ -11,7 +11,7 @@ public class PayPalStrategy implements PaymentMethodStrategy{
         this.password = password;
     }
 
-    private boolean validateCredentials() {
+    public boolean validateCredentials() {
         return email.equals("usuario@email.com") && password.equals("senha123");
     }
 

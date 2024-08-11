@@ -11,13 +11,13 @@ public class CreditCardStrategy implements PaymentMethodStrategy{
         this.securityCode = securityCode;
     }
 
-    private boolean validateCard() {
+    public boolean validateCredentials() {
         return cardNumber.equals("123456") && expirationDate.equals("12/34") && securityCode.equals("123");
     }
 
     @Override
     public void processPayment(double orderValue) {
-        if (validateCard()) {
+        if (validateCredentials()) {
             System.out.println("Pagamento via Cartão de Crédito de R$" + orderValue + " realizado com sucesso.");
         } else {
             System.out.println("Falha na validação do cartão de crédito.");

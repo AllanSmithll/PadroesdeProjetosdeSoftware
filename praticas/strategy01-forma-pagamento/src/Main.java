@@ -12,15 +12,15 @@ public class Main {
 
         System.out.print("Digite o valor total do pedido: R$");
         double orderValue = scanner.nextDouble();
+        order.setTotal(orderValue);
         scanner.nextLine();
         System.out.println("\nEscolha a forma de pagamento:");
         System.out.println("1. PayPal");
         System.out.println("2. Cartão de Crédito");
         System.out.print("Digite o número da opção desejada: ");
         int option = scanner.nextInt();
-        order.setTotal(option);
         scanner.nextLine();
-        PaymentMethodStrategy strategy = null;
+        PaymentMethodStrategy strategy;
 
         switch (option) {
             case 1:
