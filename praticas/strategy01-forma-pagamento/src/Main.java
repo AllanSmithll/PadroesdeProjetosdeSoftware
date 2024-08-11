@@ -20,16 +20,30 @@ public class Main {
         int option = scanner.nextInt();
         order.setTotal(option);
         scanner.nextLine();
-        PaymentMethodStrategy payment = null;
+        PaymentMethodStrategy strategy = null;
 
-        if (option == 1) {
-            payment = new PayPalStrategy();
-        } else if (option == 2) {
-            payment = new CreditCardStrategy();
-        } else {
-            System.out.println("Opção inválida.");
-            System.exit(1);
+        switch (option) {
+            case 1:
+                System.out.print("Digite o email do PayPal: ");
+                String email = scanner.nextLine();
+                System.out.print("Digite a senha do PayPal: ");
+                String password = scanner.nextLine();
+                strategy = new PayPalStrategy(email, password);
+                break;
+            case 2:
+                System.out.print("Digite o número do cartão: ");
+                String numberCard = scanner.nextLine();
+                System.out.print("Digite a data de expiração (mm/aa): ");
+                String expirationDate = scanner.nextLine();
+                System.out.print("Digite o código de segurança: ");
+                String securityCode = scanner.nextLine();
+                strategy = new CreditCardStrategy(numberCard, expirationDate, securityCode);
+                break;
+            default:
+                System.out.println("Método de pagamento inválido.");
+                return;
         }
-        payment.processOrder(orderValue);
+        order.checkout(strategy);
+        scanner.close();
     }
 }
