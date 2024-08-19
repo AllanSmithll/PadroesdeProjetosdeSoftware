@@ -4,15 +4,15 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ListaIterator implements Iterator<Object> {
-    private ListaEncadeada.Node currentNode;
+    private ListaEncadeada.Node noAtual;
 
     public ListaIterator(ListaEncadeada.Node startNode) {
-        this.currentNode = startNode;
+        this.noAtual = startNode;
     }
 
     @Override
     public boolean hasNext() {
-        return currentNode != null;
+        return noAtual != null;
     }
 
     @Override
@@ -20,8 +20,8 @@ public class ListaIterator implements Iterator<Object> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        Object data = currentNode.getObject();
-        currentNode = currentNode.getProximo();
+        Object data = noAtual.getObject();
+        noAtual = noAtual.getProximo();
         return data;
     }
 }
